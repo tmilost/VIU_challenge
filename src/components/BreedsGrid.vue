@@ -1,12 +1,28 @@
 <template>
   <div class="hello">
     <div>
+      <div class="per-page-pagination">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          background
+          :page-sizes="[5, 10, 15]"
+          :page-size="this.pageSize"
+          layout="total ,sizes"
+          :total="this.RandomImageBreeds.length"
+        >
+        </el-pagination>
+      </div>
       <div class="image-grid">
-        <div class="grid-image" v-for="(breed,index) in RandomImageBreeds" :key="breed">
+        <div
+          class="grid-image"
+          v-for="(breed, index) in allBreedsFiltered"
+          :key="index"
+        >
           <img
-            style="width: 250px; height: 170px"
+            style="width: 250px; height: 187px"
             class="centered project-image-bg"
-            :src="breed"
+            :src="allBreedWithRandomImage[breed]"
             alt=""
           />
           <button
@@ -16,12 +32,24 @@
               viu-buttons-list__list-item
             "
           >
-           {{allBreeds[index]}} 
+            {{ breed }}
           </button>
         </div>
       </div>
 
       <!-- /////////////////////// -->
+    </div>
+    <div class="page-pagination">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        background
+        :page-sizes="[5, 10, 15]"
+        :page-size="this.pageSize"
+        layout=" prev, pager, next"
+        :total="this.RandomImageBreeds.length"
+      >
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -34,8 +62,13 @@ import axios from "axios";
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
+  private allBreedWithRandomImage: { [key: string]: number } = {};
   private allBreeds: string[] = [];
   private RandomImageBreeds: string[] = [];
+  private pageSize = 10;
+  private pageNumber = 1;
+  private allBreedsFiltered: string[] = [];
+  private RandomImageBreedsFiltered: string[] = [];
 
   public async getAllBreeds() {
     const { data } = await axios.get("https://dog.ceo/api/breeds/list/all");
@@ -43,18 +76,18 @@ export default class HelloWorld extends Vue {
     for (let breed in data.message) {
       this.allBreeds.push(breed);
     }
-	this.getRandomImageBreed()
-    ////////////////////////////////
- 
+    this.getRandomImageBreed();
+
+    this.handleCurrentChange(1);
   }
 
   public async getRandomImageBreed() {
-      this.allBreeds.forEach((breed) => {
+    this.allBreeds.forEach((breed) => {
       axios
         .get("https://dog.ceo/api/breed/" + breed + "/images/random")
         .then((response) => {
           this.RandomImageBreeds.push(response.data.message);
-  
+          this.allBreedWithRandomImage[breed] = response.data.message;
         })
         .catch((e) => {
           console.log(e);
@@ -62,23 +95,35 @@ export default class HelloWorld extends Vue {
     });
   }
 
-  //  public getRandomImageBreed() {
-  //  var ss:string;
-  //   axios.get("https://dog.ceo/api/breed/hound/images/random").then((response) => {
-  //       ss = response.data.message;
-  //         console.log(response.data.message);
+  public handleSizeChange(val: number) {
+    this.pageSize = val;
 
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //  return "https://images.dog.ceo/breeds/hound-afghan/n02088094_5345.jpg";
+    this.allBreedsFiltered = this.allBreeds.slice(
+      this.pageNumber * this.pageSize - this.pageSize,
+      this.pageNumber * this.pageSize
+    );
+    this.RandomImageBreedsFiltered = this.RandomImageBreeds.slice(
+      this.pageNumber * this.pageSize - this.pageSize,
+      this.pageNumber * this.pageSize
+    );
+  }
 
-  //   }
+  public handleCurrentChange(val: number) {
+    this.pageNumber = val;
+
+    this.allBreedsFiltered = this.allBreeds.slice(
+      this.pageNumber * this.pageSize - this.pageSize,
+      this.pageNumber * this.pageSize
+    );
+    this.RandomImageBreedsFiltered = this.RandomImageBreeds.slice(
+      this.pageNumber * this.pageSize - this.pageSize,
+      this.pageNumber * this.pageSize
+    );
+  }
 
   mounted() {
+    this.allBreedsFiltered = this.allBreeds;
     this.getAllBreeds();
-
   }
 }
 </script>
@@ -86,6 +131,26 @@ export default class HelloWorld extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 //////////////////////////////
+.per-page-pagination {
+  justify-content: right;
+  /* Arrange children using flexbox */
+  display: flex;
+  /* ALlow images to display on multiple lines rather than a single line */
+  flex-wrap: wrap;
+  /* Container should take up only 90% of the browser, leave 5% space on each side */
+  max-width: 760px;
+  /* Center container */
+    padding: 0px 0px 15px 0px;
+  margin: 0 auto;
+}
+.page-pagination {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 960px;
+  padding: 25px 0px 55px 0px;
+    margin: 0 auto;
+}
 .image-grid {
   justify-content: center;
   /* Arrange children using flexbox */
@@ -137,9 +202,6 @@ export default class HelloWorld extends Vue {
   }
 }
 
-/////////////////////////////////////////
-
-
 .viu-button--secondary:hover {
   background: #000;
   border-color: #000;
@@ -152,8 +214,8 @@ export default class HelloWorld extends Vue {
   color: #000;
   align-items: center;
   cursor: pointer;
-//   display: flex;
-  
+  //   display: flex;
+
   flex-basis: auto;
   flex-direction: column;
   flex-grow: 0;
