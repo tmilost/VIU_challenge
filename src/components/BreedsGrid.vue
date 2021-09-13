@@ -19,12 +19,15 @@
           v-for="(breed, index) in allBreedsFiltered"
           :key="index"
         >
-          <img
+          <el-image
             style="width: 250px; height: 187px"
             class="centered project-image-bg"
+            :alt="breed"
             :src="allBreedWithRandomImage[breed]"
-            alt=""
-          />
+            :preview-src-list="[...allBreedWithRandomImage[breed]]"
+          >
+          </el-image>
+
           <button
             class="
               uppercase
@@ -140,7 +143,7 @@ export default class HelloWorld extends Vue {
   /* Container should take up only 90% of the browser, leave 5% space on each side */
   max-width: 760px;
   /* Center container */
-    padding: 0px 0px 15px 0px;
+  padding: 0px 0px 15px 0px;
   margin: 0 auto;
 }
 .page-pagination {
@@ -148,8 +151,8 @@ export default class HelloWorld extends Vue {
   display: flex;
   flex-wrap: wrap;
   max-width: 960px;
-  padding: 25px 0px 55px 0px;
-    margin: 0 auto;
+  padding: 25px 90px 55px 50px;
+  margin: 0 auto;
 }
 .image-grid {
   justify-content: center;
@@ -227,5 +230,10 @@ export default class HelloWorld extends Vue {
   text-align: center;
   width: 250px;
   padding-top: 1em;
+}
+.uppercase {
+  font-size: 14px;
+  line-height: 22px;
+  text-transform: uppercase;
 }
 </style>
