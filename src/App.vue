@@ -4,11 +4,29 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
+      <NavMenu />
     <router-view />
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import NavMenu from "../src/components/NavMenu.vue"; // @ is an alias to /src
+
+@Component({
+  components: {
+    NavMenu,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 <style lang="scss">
+html, body {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
