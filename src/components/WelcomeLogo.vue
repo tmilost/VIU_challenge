@@ -4,10 +4,16 @@
       <img
         class="logo"
         src="../assets/logoWelcome.png"
-        alt="OriginTrail"
-        width="300"
-        height="300px"
+        alt="VIU Welcome logo"
       />
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.logo {
+  width: 300px;
+  height: 300px;
+  padding: 25px 0px 45px 0px;
+}
+</style>
