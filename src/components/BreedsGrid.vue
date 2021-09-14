@@ -20,9 +20,9 @@
           :key="index"
         >
           <el-image
-            style="width: 250px; height: 187px"
-            class="centered project-image-bg"
+            class="centered project-image-bg el-image-component"
             :alt="breed"
+            lazy
             :src="allBreedWithRandomImage[breed]"
             :preview-src-list="[...allBreedWithRandomImage[breed]]"
           >
@@ -39,8 +39,6 @@
           </button>
         </div>
       </div>
-
-      <!-- /////////////////////// -->
     </div>
     <div class="page-pagination">
       <el-pagination
@@ -131,18 +129,28 @@ export default class HelloWorld extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
-//////////////////////////////
+.el-image-component {
+  width: 250px;
+  height: 187px;
+  overflow: inherit;
+  -webkit-filter: blur(0px);
+  filter: blur(0px);
+}
+.el-image-component:hover {
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+}
 .per-page-pagination {
   justify-content: right;
-  /* Arrange children using flexbox */
+
   display: flex;
-  /* ALlow images to display on multiple lines rather than a single line */
+
   flex-wrap: wrap;
-  /* Container should take up only 90% of the browser, leave 5% space on each side */
-  max-width: 760px;
-  /* Center container */
+
+  max-width: 1360px;
+
   padding: 0px 0px 15px 0px;
   margin: 0 auto;
 }
@@ -156,23 +164,15 @@ export default class HelloWorld extends Vue {
 }
 .image-grid {
   justify-content: center;
-  /* Arrange children using flexbox */
   display: flex;
-  /* ALlow images to display on multiple lines rather than a single line */
   flex-wrap: wrap;
-  /* Container should take up only 90% of the browser, leave 5% space on each side */
-  max-width: 960px;
-  /* Center container */
+  max-width: 1360px;
   margin: 0 auto;
 }
 .grid-image {
-  /* images display inline by default and act like text. We want them to act like divs, so display block */
   display: block;
-  /* our width setting for mobile, one image per line */
   flex-basis: 100%;
-  /* provide some space between our images */
   padding: 10px;
-  /* ensure padding doesn't cause images to wrap, it should be within the width rather than in addition */
   box-sizing: border-box;
 }
 
@@ -211,13 +211,13 @@ export default class HelloWorld extends Vue {
   color: #fff;
 }
 .viu-button {
-  font-family: europa, sans-serif;
-  background: transparent;
-  border: 1px solid #000;
+  font-family: monaco, Consolas, Lucida Console, monospace;
+  background: #fafafa;
+  border: 0px solid #000;
+  border-width: 0;
   color: #000;
   align-items: center;
   cursor: pointer;
-  //   display: flex;
 
   flex-basis: auto;
   flex-direction: column;
