@@ -327,20 +327,6 @@
   </div>
 </template>
 <style lang="scss" scoped>
-/* Support for CSS `d` property is required. */
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  align-items: center;
-  background-color: #d4e6ff;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
 
 .sausage-dog-animation {
   height: 25rem;
