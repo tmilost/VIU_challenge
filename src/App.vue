@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-      <NavMenu />
+    <NavMenu />
     <router-view />
   </div>
 </template>
@@ -22,7 +22,8 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
-html, body {
+html,
+body {
   margin: 0px !important;
   padding: 0px !important;
 }
@@ -33,7 +34,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #fff;
+  background-color: #f2f4f6;
 }
 
 #nav {
