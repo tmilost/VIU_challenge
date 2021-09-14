@@ -10,20 +10,19 @@
               alt="VIU logo"
             />
           </el-menu-item>
-          <el-menu-item v-on:click="toLink(config.cvUrl)" class="menu-item"
-            ><i class="fas fa-address-card"></i
-          ></el-menu-item>
-
-          <el-menu-item v-on:click="toLink(config.instagram)" class="menu-item"
-            ><i class="fab fa-instagram"></i
-          ></el-menu-item>
-          <el-menu-item v-on:click="toLink(config.gitUrl)" class="menu-item"
-            ><i class="fab fa-github"></i
-          ></el-menu-item>
           <el-menu-item
             v-on:click="toLink(config.linkedInUrl)"
             class="menu-item"
             ><i class="fab fa-linkedin"></i
+          ></el-menu-item>
+          <el-menu-item v-on:click="toLink(config.gitUrl)" class="menu-item"
+            ><i class="fab fa-github"></i
+          ></el-menu-item>
+          <el-menu-item v-on:click="toLink(config.instagramUrl)" class="menu-item"
+            ><i class="fab fa-instagram"></i
+          ></el-menu-item>
+          <el-menu-item v-on:click="toLink(config.cvUrl)" class="menu-item"
+            ><i class="fas fa-address-card"></i
           ></el-menu-item>
         </div>
       </div>
