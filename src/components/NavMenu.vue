@@ -18,7 +18,9 @@
           <el-menu-item v-on:click="toLink(config.gitUrl)" class="menu-item"
             ><i class="fab fa-github"></i
           ></el-menu-item>
-          <el-menu-item v-on:click="toLink(config.instagramUrl)" class="menu-item"
+          <el-menu-item
+            v-on:click="toLink(config.instagramUrl)"
+            class="menu-item"
             ><i class="fab fa-instagram"></i
           ></el-menu-item>
           <el-menu-item v-on:click="toLink(config.cvUrl)" class="menu-item"
