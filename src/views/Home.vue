@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-     <WelcomeLogo/>
+    <WelcomeLogo />
     <BreedsGrid />
+    <SausageDog />
   </div>
 </template>
 
@@ -9,11 +10,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import WelcomeLogo from "@/components/WelcomeLogo.vue"; // @ is an alias to /src
 import BreedsGrid from "@/components/BreedsGrid.vue"; // @ is an alias to /src
+import SausageDog from "@/components/SausageDog.vue"; // @ is an alias to /src
 
 @Component({
   components: {
     WelcomeLogo,
     BreedsGrid,
+    SausageDog,
   },
 })
 export default class Home extends Vue {}
