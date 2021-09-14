@@ -8,9 +8,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import WelcomeLogo from "@/components/WelcomeLogo.vue"; // @ is an alias to /src
-import BreedsGrid from "@/components/BreedsGrid.vue"; // @ is an alias to /src
-import SausageDog from "@/components/SausageDog.vue"; // @ is an alias to /src
+import WelcomeLogo from "@/components/WelcomeLogo.vue";
+import BreedsGrid from "@/components/BreedsGrid.vue";
+import SausageDog from "@/components/SausageDog.vue";
 
 @Component({
   components: {
