@@ -123,7 +123,6 @@ $black: #000;
 .main-div {
   padding: 55px 0px 15px 0px;
 }
-
 .home-page-button {
   margin-left: 15px;
 }
@@ -136,20 +135,19 @@ $black: #000;
   box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-}
-.el-image-component:hover {
-  -webkit-filter: blur(1px);
-  filter: blur(1px);
+  &:hover {
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+  }
 }
 .per-page-pagination {
   display: flex;
   justify-content: space-between;
-
   flex-wrap: wrap;
-
   max-width: 1360px;
-
   padding: 0px 0px 15px 0px;
   margin: 0 auto;
 }
@@ -177,50 +175,20 @@ $black: #000;
   padding: 10px;
   box-sizing: border-box;
 }
-
-/* increase images per line as browser gets larger using media queries
-   this first query makes two images per line at 640px width */
-@media only screen and (min-width: 640px) {
-  .grid-image {
-    flex-basis: 50%;
-  }
-}
-
-/* three images per line when browser width exceeds 960px */
-@media only screen and (min-width: 960px) {
-  .grid-image {
-    flex-basis: 33.333%;
-  }
-}
-
-/* four images per line when browser width exceeds 1280px */
-@media only screen and (min-width: 1280px) {
-  .grid-image {
-    flex-basis: 25%;
-  }
-}
-
-/* five images per line when browser width exceeds 1600px */
-@media only screen and (min-width: 1600px) {
-  .grid-image {
-    flex-basis: 20%;
-  }
-}
-
-/* Container needed to position the overlay. Adjust the width as needed */
 .container {
   position: relative;
   width: 100%;
   max-width: 400px;
+  &:hover {
+    .overlay {
+      opacity: 1;
+    }
+  }
 }
-
-/* Make the image to responsive */
 .image {
   width: 100%;
   height: auto;
 }
-
-/* The overlay effect (full height and width) - lays on top of the container and over the image */
 .overlay {
   top: 0;
   bottom: 0;
@@ -233,13 +201,6 @@ $black: #000;
   background-color: transparent;
   pointer-events: none;
 }
-
-/* When you mouse over the container, fade in the overlay icon*/
-.container:hover .overlay {
-  opacity: 1;
-}
-
-/* The icon inside the overlay is positioned in the middle vertically and horizontally */
 .icon {
   color: $white;
   font-size: 100px;
@@ -247,12 +208,35 @@ $black: #000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
   text-align: center;
 }
-
-/* When you move the mouse over the icon, change color */
-.fa-user:hover {
-  color: #eee;
+.fa-user {
+  &:hover {
+    color: #eee;
+  }
+}
+@media only screen and (min-width: 640px) {
+  .grid-image {
+    flex-basis: 50%;
+  }
+}
+@media only screen and (min-width: 960px) {
+  .grid-image {
+    flex-basis: 33.333%;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .grid-image {
+    flex-basis: 25%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .grid-image {
+    flex-basis: 20%;
+  }
 }
 </style>

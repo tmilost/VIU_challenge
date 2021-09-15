@@ -326,7 +326,7 @@
     </svg>
   </div>
 </template>
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .sausage-dog-animation {
   height: 25rem;
   max-height: 80vh;

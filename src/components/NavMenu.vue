@@ -49,25 +49,26 @@ export default class NavMenu extends Vue {
 
 <style lang="scss" scoped>
 .menu-items {
-  justify-content: center;
-
-  display: flex;
+	justify-content: center;
+	display: flex;
 }
 .el-menu-item {
-  width: 1124px;
+	width: 1124px;
+	&:focus {
+		background-color: #ffff;
+	}
+	&:hover {
+		background-color: #ffff;
+	}
 }
 .menu-item-image {
-  float: left;
-  width: 89px;
-  height: 30px;
-  padding-top: 12px;
+	float: left;
+	width: 89px;
+	height: 30px;
+	padding-top: 12px;
 }
 .menu-item {
-  float: right;
-  width: 59px;
-}
-.el-menu-item:focus,
-.el-menu-item:hover {
-  background-color: #ffff;
+	float: right;
+	width: 59px;
 }
 </style>
