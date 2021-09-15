@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import Breed from "../views/Breed.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,12 @@ const routes: Array<RouteConfig> = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: '/breed/:breed',
+    name: 'Breed',
+    component: Breed,
+    props: (route) => ({ breed: route.params.breed}),
   },
   {
     path: "/about",
