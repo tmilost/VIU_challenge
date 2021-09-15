@@ -32,7 +32,6 @@
             <div class="overlay">
               <a
                 href="#"
-                :preview-src-list="[...allBreedWithRandomImage[breed]]"
                 class="icon"
                 title="click to see image full size"
               >
