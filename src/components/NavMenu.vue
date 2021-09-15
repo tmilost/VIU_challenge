@@ -54,7 +54,7 @@ export default class NavMenu extends Vue {
   display: flex;
 }
 .el-menu-item {
-  width: 575px;
+  width: 1124px;
 }
 .menu-item-image {
   float: left;
@@ -65,5 +65,9 @@ export default class NavMenu extends Vue {
 .menu-item {
   float: right;
   width: 59px;
+}
+.el-menu-item:focus,
+.el-menu-item:hover {
+  background-color: #ffff;
 }
 </style>
