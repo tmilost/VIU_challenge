@@ -9,7 +9,7 @@
           :page-sizes="[5, 10, 15]"
           :page-size="this.pageSize"
           layout="total ,sizes"
-          :total="this.RandomImageBreeds.length"
+          :total="this.randomImageBreeds.length"
         >
         </el-pagination>
       </div>
@@ -61,7 +61,7 @@
         :page-sizes="[5, 10, 15]"
         :page-size="this.pageSize"
         layout=" prev, pager, next"
-        :total="this.RandomImageBreeds.length"
+        :total="this.randomImageBreeds.length"
       >
       </el-pagination>
     </div>
@@ -74,15 +74,13 @@ import axios from "axios";
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
-
   private allBreedWithRandomImage: { [key: string]: number } = {};
   private allBreeds: string[] = [];
-  private RandomImageBreeds: string[] = [];
+  private randomImageBreeds: string[] = [];
   private pageSize = 10;
   private pageNumber = 1;
   private allBreedsFiltered: string[] = [];
-  private RandomImageBreedsFiltered: string[] = [];
+  private randomImageBreedsFiltered: string[] = [];
 
   public async getAllBreeds() {
     const { data } = await axios.get("https://dog.ceo/api/breeds/list/all");
@@ -100,7 +98,7 @@ export default class HelloWorld extends Vue {
       axios
         .get("https://dog.ceo/api/breed/" + breed + "/images/random")
         .then((response) => {
-          this.RandomImageBreeds.push(response.data.message);
+          this.randomImageBreeds.push(response.data.message);
           this.allBreedWithRandomImage[breed] = response.data.message;
         })
         .catch((e) => {
@@ -116,7 +114,7 @@ export default class HelloWorld extends Vue {
       this.pageNumber * this.pageSize - this.pageSize,
       this.pageNumber * this.pageSize
     );
-    this.RandomImageBreedsFiltered = this.RandomImageBreeds.slice(
+    this.randomImageBreedsFiltered = this.randomImageBreeds.slice(
       this.pageNumber * this.pageSize - this.pageSize,
       this.pageNumber * this.pageSize
     );
@@ -129,7 +127,7 @@ export default class HelloWorld extends Vue {
       this.pageNumber * this.pageSize - this.pageSize,
       this.pageNumber * this.pageSize
     );
-    this.RandomImageBreedsFiltered = this.RandomImageBreeds.slice(
+    this.randomImageBreedsFiltered = this.randomImageBreeds.slice(
       this.pageNumber * this.pageSize - this.pageSize,
       this.pageNumber * this.pageSize
     );
@@ -153,6 +151,9 @@ export default class HelloWorld extends Vue {
 
 
 <style scoped lang="scss">
+$white: #ffffff;
+$black: #000;
+
 .el-image-component {
   width: 250px;
   height: 187px;
@@ -232,9 +233,9 @@ export default class HelloWorld extends Vue {
 }
 
 .viu-button--secondary:hover {
-  background: #000;
-  border-color: #000;
-  color: #fff;
+  background: $black;
+  border-color: $black;
+  color: $white;
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -243,9 +244,9 @@ export default class HelloWorld extends Vue {
 .viu-button {
   font-family: monaco, Consolas, Lucida Console, monospace;
   background: #fafafa;
-  border: 0px solid #000;
+  border: 0px solid $black;
   border-width: 0;
-  color: #000;
+  color: $black;
   align-items: center;
   cursor: pointer;
 
@@ -301,7 +302,7 @@ export default class HelloWorld extends Vue {
 
 /* The icon inside the overlay is positioned in the middle vertically and horizontally */
 .icon {
-  color: white;
+  color: $white;
   font-size: 100px;
   position: absolute;
   top: 50%;
