@@ -7,6 +7,7 @@
         alt="VIU Welcome logo"
       />
     </div>
+    
   </div>
 </template>
 
