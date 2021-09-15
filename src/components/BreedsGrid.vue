@@ -41,6 +41,7 @@
             </div>
           </div>
           <button
+            v-on:click="routerPushBreedPage(breed)"
             class="
               uppercase
               viu-button viu-button--secondary
@@ -134,6 +135,15 @@ export default class HelloWorld extends Vue {
     );
   }
 
+  public routerPushBreedPage(breed: string) {
+    this.$router.push({
+      name: "Breed",
+      params: {
+        breed: breed,
+      },
+    });
+  }
+
   mounted() {
     this.allBreedsFiltered = this.allBreeds;
     this.getAllBreeds();
@@ -149,6 +159,10 @@ export default class HelloWorld extends Vue {
   overflow: inherit;
   -webkit-filter: blur(0px);
   filter: blur(0px);
+  box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 4px -0px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 .el-image-component:hover {
   -webkit-filter: blur(1px);
@@ -221,6 +235,10 @@ export default class HelloWorld extends Vue {
   background: #000;
   border-color: #000;
   color: #fff;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 .viu-button {
   font-family: monaco, Consolas, Lucida Console, monospace;
