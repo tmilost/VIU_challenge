@@ -1,7 +1,12 @@
 <template>
-  <div class="hello">
+  <div class="breeds-grid">
     <div>
       <div class="per-page-pagination">
+        <div v-on:click="routerPushBreedPageRandom()">
+          <el-button class="random-dog-button" type="plain" size="mini"
+            ><i class="fas fa-dog"></i> Random breed <i class="fas fa-bone"></i
+          ></el-button>
+        </div>
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -30,11 +35,7 @@
             </el-image>
 
             <div class="overlay">
-              <a
-                href="#"
-                class="icon"
-                title="click to see image full size"
-              >
+              <a href="#" class="icon" title="click to see image full size">
                 <i class="fas fa-expand-arrows-alt"></i>
               </a>
             </div>
@@ -141,6 +142,18 @@ export default class HelloWorld extends Vue {
     });
   }
 
+  public routerPushBreedPageRandom() {
+    const randomIndex = Math.floor(Math.random() * this.allBreeds.length);
+    const randomBreed = this.allBreeds[randomIndex];
+
+    this.$router.push({
+      name: "Breed",
+      params: {
+        breed: randomBreed,
+      },
+    });
+  }
+
   mounted() {
     this.allBreedsFiltered = this.allBreeds;
     this.getAllBreeds();
@@ -168,10 +181,13 @@ $black: #000;
   -webkit-filter: blur(1px);
   filter: blur(1px);
 }
-.per-page-pagination {
-  justify-content: right;
+.random-dog-button {
+  margin-left: 15px;
+}
 
+.per-page-pagination {
   display: flex;
+  justify-content: space-between;
 
   flex-wrap: wrap;
 
